@@ -1,0 +1,16 @@
+run.vbs is just to hide the batch file cmd box
+-----------------------------------------------
+Set oShell = CreateObject ("Wscript.Shell") 
+Dim strArgs
+strArgs = "cmd /c akistart.bat"
+oShell.Run strArgs, 0, false
+-----------------------------------------------
+akistart just a batch file to start server then timeout 10 secs then start launcher
+-----------------------------------------------
+@echo off
+set server="%~dp0\Aki.Server.exe"
+set launcher="%~dp0\Aki.Launcher.exe"
+start "" %server%
+@timeout /t 10 /nobreak >nul
+start "" %launcher%
+-----------------------------------------------
